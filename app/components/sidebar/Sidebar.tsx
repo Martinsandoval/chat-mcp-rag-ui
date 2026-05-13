@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FileText, MessageSquare, Plug, ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, FileText, MessageSquare, Plug } from "lucide-react"
 import { useState } from "react"
 
 import { cn } from "@/lib/utils"
@@ -30,21 +30,22 @@ type NavSection = {
 }
 
 const mainItems: NavItem[] = [
-    { label: "Chats",        href: "/chats",        icon: MessageSquare },
-    { label: "Documents",    href: "/documents",    icon: FileText, badge: 3 },
+    { label: "Chats", href: "/chats", icon: MessageSquare },
+    { label: "Documents", href: "/documents", icon: FileText, badge: 3 },
     { label: "Integrations", href: "/integrations", icon: Plug },
 ]
 
-const sections: NavSection[] = [
-    {
-        label: "Services",
-        items: [
-            { label: "LinkedIn", href: "/linkedin", icon: LinkedInIcon },
-        ],
-    },
-]
+const sections: NavSection[] = []
 
-function NavLink({ item, collapsed, pathname }: { item: NavItem; collapsed: boolean; pathname: string }) {
+function NavLink({
+    item,
+    collapsed,
+    pathname,
+}: {
+    item: NavItem
+    collapsed: boolean
+    pathname: string
+}) {
     const isActive = pathname.startsWith(item.href)
     return (
         <Link
@@ -86,17 +87,29 @@ export function Sidebar() {
             <div className="relative shrink-0 border-b bg-[#1A3842]">
                 {collapsed ? (
                     <div className="flex h-[72px] items-center justify-center">
-                        <img src="/logo.png" alt="Aura" className="h-10 w-10 object-cover object-left" />
+                        <img
+                            src="/logo.png"
+                            alt="Aura"
+                            className="h-10 w-10 object-cover object-left"
+                        />
                     </div>
                 ) : (
-                    <img src="/logo.png" alt="Aura" className="h-[72px] w-full object-contain object-center" />
+                    <img
+                        src="/logo.png"
+                        alt="Aura"
+                        className="h-[72px] w-full object-contain object-center"
+                    />
                 )}
                 <button
                     onClick={() => setCollapsed(!collapsed)}
                     className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/25"
                     title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
                 >
-                    {collapsed ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronLeft className="h-3.5 w-3.5" />}
+                    {collapsed ? (
+                        <ChevronRight className="h-3.5 w-3.5" />
+                    ) : (
+                        <ChevronLeft className="h-3.5 w-3.5" />
+                    )}
                 </button>
             </div>
 
@@ -104,7 +117,12 @@ export function Sidebar() {
                 {/* Main nav */}
                 <nav className="space-y-1">
                     {mainItems.map((item) => (
-                        <NavLink key={item.href} item={item} collapsed={collapsed} pathname={pathname} />
+                        <NavLink
+                            key={item.href}
+                            item={item}
+                            collapsed={collapsed}
+                            pathname={pathname}
+                        />
                     ))}
                 </nav>
 
@@ -119,7 +137,12 @@ export function Sidebar() {
                         {collapsed && <div className="my-2 border-t" />}
                         <nav className="space-y-1">
                             {section.items.map((item) => (
-                                <NavLink key={item.href} item={item} collapsed={collapsed} pathname={pathname} />
+                                <NavLink
+                                    key={item.href}
+                                    item={item}
+                                    collapsed={collapsed}
+                                    pathname={pathname}
+                                />
                             ))}
                         </nav>
                     </div>
