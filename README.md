@@ -1,4 +1,4 @@
-Visit the app https://chat-mcp-rag-8tqc0j3i3-martinsandovals-projects.vercel.app (backend is not wired up yet)
+Visit the app https://chat-mcp-rag-3loo05v48-martinsandovals-projects.vercel.app/ (backend is not wired up yet)
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
